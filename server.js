@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
@@ -16,6 +17,7 @@ const inventorySchema = new mongoose.Schema({
 const Inventory = mongoose.model('Inventory', inventorySchema);
 
 app.use(bodyParser.json());
+app.use(cors());
 
 // Get current inventory
 app.get('/api/inventory', async (req, res) => {
