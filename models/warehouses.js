@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const warehousesSchema = new mongoose.Schema({
-    Location: Number,
+    Location: String,
     Warehousenr: String
   });
 
