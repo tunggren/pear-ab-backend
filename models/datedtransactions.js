@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const datedTransactionSchema = new mongoose.Schema({
-    Datum: Date,
-    Produkt: String,
-    TillFrån: String,
-    Antal: Number,
-    Typ: String
+    Date: Date,
+    Product: String,
+    Location: String,
+    Quantity: Number,
+    Type: String
   });
 
   const datedTransactions = mongoose.model('datedTransaction', datedTransactionSchema);

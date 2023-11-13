@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const warehousesSchema = new mongoose.Schema({
-    Lagernr: Number,
-    Stad: String
+    Location: Number,
+    Warehousenr: String
   });
 
   const warehouses = mongoose.model('warehouses', warehousesSchema);

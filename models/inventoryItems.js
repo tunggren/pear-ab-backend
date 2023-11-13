@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const inventoryItemsSchema = new mongoose.Schema({
-    Produkt: String,
-    Lagersaldo: Number,
-    Färdigvarulager: String
+    Product: String,
+    Balance: Number,
+    Warehouse: String
   });
 
   const inventoryItems = mongoose.model('inventoryItems', inventoryItemsSchema);
