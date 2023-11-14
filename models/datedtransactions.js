@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const datedTransactionSchema = new mongoose.Schema({
-    Date: Date,
+    Date: String,
     Product: String,
     Location: String,
     Quantity: Number,
