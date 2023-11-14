@@ -33,7 +33,7 @@ app.get("/inventoryItems", async (req, res) => {
 
 app.post("/inventoryItems", async (req, res) => {
   try {
-    const newItem = new InventoryItem(req.body);
+    const newItem = new inventoryItems(req.body);
     await newItem.save();
     res.status(201).json({ message: "Item added successfully" });
   } catch (error) {
@@ -77,10 +77,11 @@ app.get("/datedTransactions", async (req, res) => {
 
 app.post("/datedTransactions", async (req, res) => {
   try {
-    const newDatedTransaction = new DatedTransaction(req.body);
+    const newDatedTransaction = new datedTransactions(req.body);
     await newDatedTransaction.save();
     res.status(201).json({ message: "Dated transaction added successfully" });
   } catch (error) {
+    console.error(error);
     res.status(500).send(error.message);
   }
 });
@@ -90,7 +91,11 @@ app.put("/datedTransactions/:id", async (req, res) => {
     const itemId = req.params.id;
     const updatedDatedTransaction = req.body;
 
-    const result = await datedTransactions.findByIdAndUpdate(itemId, updatedDatedTransaction, { new: true });
+    const result = await datedTransactions.findByIdAndUpdate(
+      itemId,
+      updatedDatedTransaction,
+      { new: true }
+    );
     res.json(result);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -121,7 +126,7 @@ app.get("/initialBalanceTransactions", async (req, res) => {
 
 app.post("/initialBalanceTransactions", async (req, res) => {
   try {
-    const newinitialBalanceTransaction = new InitialBalanceTransaction(
+    const newinitialBalanceTransaction = new initialBalanceTransactions(
       req.body
     );
     await newinitialBalanceTransaction.save();
@@ -138,7 +143,11 @@ app.put("/initialBalanceTransactions/:id", async (req, res) => {
     const itemId = req.params.id;
     const updatedInitialBalanceTransaction = req.body;
 
-    const result = await initialBalanceTransactions.findByIdAndUpdate(itemId, updatedInitialBalanceTransaction, { new: true });
+    const result = await initialBalanceTransactions.findByIdAndUpdate(
+      itemId,
+      updatedInitialBalanceTransaction,
+      { new: true }
+    );
     res.json(result);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -156,7 +165,6 @@ app.delete("/initialBalanceTransactions/:id", async (req, res) => {
   }
 });
 
-
 app.get("/products", async (req, res) => {
   try {
     const allProducts = await products.find().exec();
@@ -168,7 +176,7 @@ app.get("/products", async (req, res) => {
 
 app.post("/products", async (req, res) => {
   try {
-    const newProduct = new Product(req.body);
+    const newProduct = new products(req.body);
     await newProduct.save();
     res.status(201).json({ message: "Product added successfully" });
   } catch (error) {
@@ -181,7 +189,9 @@ app.put("/products/:id", async (req, res) => {
     const itemId = req.params.id;
     const updatedProduct = req.body;
 
-    const result = await products.findByIdAndUpdate(itemId, updatedProduct, { new: true });
+    const result = await products.findByIdAndUpdate(itemId, updatedProduct, {
+      new: true,
+    });
     res.json(result);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -199,7 +209,6 @@ app.delete("/products/:id", async (req, res) => {
   }
 });
 
-
 app.get("/warehouses", async (req, res) => {
   try {
     const allWarehouses = await warehouses.find().exec();
@@ -211,7 +220,7 @@ app.get("/warehouses", async (req, res) => {
 
 app.post("/warehouses", async (req, res) => {
   try {
-    const newWarehouse = new Warehouse(req.body);
+    const newWarehouse = new warehouses(req.body);
     await newWarehouse.save();
     res.status(201).json({ message: "Warehouse added successfully" });
   } catch (error) {
@@ -224,7 +233,11 @@ app.put("/warehouses/:id", async (req, res) => {
     const itemId = req.params.id;
     const updatedWarehouse = req.body;
 
-    const result = await warehouses.findByIdAndUpdate(itemId, updatedWarehouse, { new: true });
+    const result = await warehouses.findByIdAndUpdate(
+      itemId,
+      updatedWarehouse,
+      { new: true }
+    );
     res.json(result);
   } catch (error) {
     res.status(500).json({ error: error.message });
