@@ -262,7 +262,7 @@ app.delete("/warehouses/:id", async (req, res) => {
   }
 });
 
-//Startar servern och consol loggar att den är igång
+//Startar servern och consol-loggar att den är igång
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
