@@ -1,6 +1,9 @@
+//Express används för att kunna skapa servern
 const express = require("express");
+//Importerar mongoose för att kunna interagera med mongoDB-databasen
 const mongoose = require("mongoose");
 const cors = require("cors");
+//Används för att kunna hantera JSON requests
 const bodyParser = require("body-parser");
 require("dotenv").config();
 
@@ -10,9 +13,11 @@ const initialBalanceTransactions = require("./models/initialbalancetransactions"
 const products = require("./models/products");
 const warehouses = require("./models/warehouses");
 
+//Här skapas en instans av express-applikationen
 const app = express();
 const PORT = 3000;
 
+//Här connectar vi till mongoDB-databasen som heter inventory
 mongoose.connect("mongodb://localhost/inventory", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -21,6 +26,8 @@ mongoose.connect("mongodb://localhost/inventory", {
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json());
+
+//Nedan är en .get, .post, .put och .delete metod för varje collection in databasen
 
 app.get("/inventoryItems", async (req, res) => {
   try {
@@ -255,6 +262,7 @@ app.delete("/warehouses/:id", async (req, res) => {
   }
 });
 
+//Startar servern och consol loggar att den är igång
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
