@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json());
 
-//Nedan är en .get, .post, .put och .delete metod för varje collection in databasen
+//Nedan är en .get, .post, .put och .delete metod för varje collection i databasen
 
 app.get("/inventoryItems", async (req, res) => {
   try {
