@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const inventoryItemsSchema = new mongoose.Schema({
     Product: String,
     Balance: Number,
-    Warehouse: String
+    Location: String
   });
 
   const inventoryItems = mongoose.model('inventoryItems', inventoryItemsSchema);
